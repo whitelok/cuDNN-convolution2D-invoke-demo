@@ -12,12 +12,17 @@ NVCC		= $(CUDA_DIR)/bin/nvcc
 CUDA_INC_DIR = $(CUDA_DIR)/include
 CUDA_LIB_DIR = $(CUDA_DIR)/lib64
 
+CUDNN_DIR   = /cuda
+CUDNN_INC_DIR = ${CUDNN_DIR}/include
+CUDNN_LIB_DIR = ${CUDNN_DIR}/lib64
+
 vpath  		%.cpp $(SRC_DIR)
 vpath  		%.cu  $(SRC_DIR)
 vpath		%.h	  $(INC_DIR)
 
 IFLAGS      = -I$(INC_DIR)\
-	          -I$(CUDA_INC_DIR)
+	          -I$(CUDA_INC_DIR)\
+			  -I$(CUDNN_DIR)
 
 OPT_FLAGS 	= -O3
 ifeq ($(DEBUG), 1)
@@ -30,7 +35,7 @@ ifeq ($(NVPROFILE), 1)
 CFLAGS += -DNVPROFILE
 endif
 
-LDFLAGS     =  -L$(CUDA_LIB_DIR) -lcudart -lcudnn 
+LDFLAGS     =  -L$(CUDA_LIB_DIR) -L$(CUDA_LIB_DIR) -lcudart -lcudnn 
 
 SRCS 		= $(wildcard $(SRC_DIR)/*.cpp)
 CU_SRCS     = $(wildcard $(SRC_DIR)/*.cu)
