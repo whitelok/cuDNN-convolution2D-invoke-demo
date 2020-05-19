@@ -22,7 +22,7 @@ vpath		%.h	  $(INC_DIR)
 
 IFLAGS      = -I$(INC_DIR)\
 	          -I$(CUDA_INC_DIR)\
-			  -I$(CUDNN_DIR)
+			  -I$(CUDNN_INC_DIR)
 
 OPT_FLAGS 	= -O3
 ifeq ($(DEBUG), 1)
