@@ -35,7 +35,7 @@ ifeq ($(NVPROFILE), 1)
 CFLAGS += -DNVPROFILE
 endif
 
-LDFLAGS     =  -L$(CUDA_LIB_DIR) -L$(CUDA_LIB_DIR) -lcudart -lcudnn 
+LDFLAGS     =  -L$(CUDA_LIB_DIR) -L$(CUDNN_LIB_DIR) -lcudart -lcudnn 
 
 SRCS 		= $(wildcard $(SRC_DIR)/*.cpp)
 CU_SRCS     = $(wildcard $(SRC_DIR)/*.cu)
